@@ -1,5 +1,5 @@
 - hosts: all
   tasks: 
     - name: Collect only facts returned by facter 
-      ansible.builtin.setup:
-        filter: ansible_local
+      set_fact:
+        kernel_version: "{{ versions | combine( { item: hostvars[item]['ansible_distribution_version'] + '_' + hostvars[item]['ansible_kernel']   }  )  }}" 
