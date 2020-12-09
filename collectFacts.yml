@@ -1,5 +1,5 @@
-- name: Collect only facts returned by facter
-  hosts: all
-  setup:
-    - facter
-
+- hosts: all
+  tasks: 
+    - name: Collect only facts returned by facter 
+      ansible.builtin.setup:
+        filter: ansible_local
