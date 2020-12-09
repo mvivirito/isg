@@ -1,5 +1,5 @@
 - hosts: all
+  gather_facts: no
   tasks: 
     - name: Collect only facts returned by facter 
-      set_fact:
-        kernel_version: "{{ versions | combine( { item: hostvars[item]['ansible_distribution_version'] + '_' + hostvars[item]['ansible_kernel']   }  )  }}" 
+      setup:
