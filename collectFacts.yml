@@ -11,6 +11,7 @@
 # ansible all -m setup -a 'gather_subset=!all,!any,facter'
 
 - name: Collect only facts returned by facter
+  hosts: all
   setup:
     gather_subset:
       - '!all'
